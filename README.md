@@ -1,16 +1,7 @@
-#  Modul Praktikum: CSS Box Model, Float, dan Semantic Layout
 
-Dokumentasi lengkap langkah-langkah praktikum pembuatan tata letak (*layout*) web modern menggunakan konsep **CSS Box Model**, pengontrolan tata letak dengan properti **Float**, serta penerapan **HTML5 Semantic Elements**.
+## Langkah-Langkah Praktikum
 
----
-
-##  Langkah-Langkah Praktikum
-
-### 1. Konsep Box Model & CSS Float (`lab4_box.html`)
-
-Secara *default*, setiap elemen HTML diperlakukan oleh browser sebagai sebuah kotak (*box*) persegi panjang. Konsep **CSS Box Model** terdiri dari empat komponen utama: **Content** (isi elemen), **Padding** (jarak antara isi dan garis tepi), **Border** (garis tepi), dan **Margin** (jarak luar antar elemen).
-
-Pada tahap awal ini, kita membuat tiga elemen `div` dasar di dalam kontainer `<section>` tanpa tambahan gaya tata letak agar terlihat bagaimana perilaku *block-level element* secara bawaan (tersusun secara vertikal dari atas ke bawah).
+### 1. Konsep Box Element dan CSS Float (`lab4_box.html`)
 
 ```html
 <section>
@@ -19,17 +10,6 @@ Pada tahap awal ini, kita membuat tiga elemen `div` dasar di dalam kontainer `<s
     <div class="div3">Div 3</div>
 </section>
 ```
-
-> ** Penjelasan Teknis:** Elemen `div` merupakan *block-level element*, yang berarti elemen ini secara otomatis akan memakan seluruh lebar baris yang tersedia, membuat kotak-kotak tersebut menumpuk ke bawah meskipun ukurannya kecil.
-
-> **📸 Preview (Tanpa Float):**  
-> ![Langkah 1 - Box Element Tanpa Float](./screenshots/1.png)
-
----
-
-### 2. Menerapkan CSS Float Property
-
-Untuk mengubah perilaku *block-level* yang menumpuk ke bawah menjadi berdampingan secara horizontal, kita menggunakan properti `float: left`. Properti ini membuat elemen keluar dari alur dokumen normal (*normal flow*) dan menggeser elemen berikutnya ke sisi kanan atau kiri.
 
 ```css
 div {
@@ -41,18 +21,26 @@ div {
 .div3 { background: green; }
 ```
 
-> ** Penjelasan Teknis:** Dengan menambahkan `float: left`, ketiga kotak akan ditarik ke sebelah kiri secara berurutan. Penambahan `padding` berfungsi memberikan ruang internal di dalam kotak agar teks tidak menempel langsung pada tepi latar belakang warna.
+**Screenshot Hasil :**  
+![Langkah 1 - Box Element Dan CSS Float](./screenshots/1.png)
 
-> **📸 Preview (Dengan Float):**  
-> ![Langkah 2 - Box Element Dengan Float](./screenshots/2.png)
+Struktur HTML (<section> dan <div>):
 
----
+Sebuah elemen induk <section> berisi tiga elemen anak berbentuk kotak (<div>) dengan kelas div1, div2, dan div3.
 
-### 3. Mengatur Clearfix Element
+Aturan Umum untuk Semua div (div { ... }):
 
-Salah satu efek samping dari penggunaan properti `float` adalah elemen di bawahnya atau kontainer pembungkus bisa kehilangan referensi tinggi (*height collapse*). Untuk mengatasinya, kita menggunakan properti `clear`.
+float: left;: Membuat ketiga kotak yang tadinya tersusun secara vertikal (kebawah) menjadi berjajar ke samping kiri secara horizontal.
 
-Ketika ditambahkan elemen keempat (`div4`), kita menerapkan `clear: left` agar elemen tersebut menolak untuk berada di samping elemen yang melayang, sehingga dipaksa turun ke baris baru.
+padding: 10px;: Menambahkan ruang di dalam setiap kotak antara teks dan bagian tepinya.
+
+Styling Spesifik per Kotak (.div1, .div2, .div3):
+
+.div1: Memberikan warna latar belakang merah.
+.div2: Memberikan warna latar belakang kuning dengan teks berwarna hitam (#000).
+.div3: Memberikan warna latar belakang hijau.
+
+### 2. Mengatur Clearfix Element
 
 ```css
 .div4 {
@@ -62,16 +50,31 @@ Ketika ditambahkan elemen keempat (`div4`), kita menerapkan `clear: left` agar e
 }
 ```
 
-> ** Penjelasan Teknis:** `clear: left` memberitahu browser bahwa tidak boleh ada elemen yang mengambang (*floating*) di sisi kiri elemen `div4`, yang secara efektif mengembalikan perilaku baris baru pada elemen tersebut.
+**Screenshot Hasil (Clearfix):**  
+![Langkah 2 - Clearfix Element](./screenshots/2.png)
 
-> **📸 Preview (Clearfix):**  
-> ![Langkah 3 - Clearfix Element](./screenshots/3.png)
+background-color: blue;
 
----
+Fungsi: Memberikan warna latar belakang (background) biru pada elemen dengan kelas .div4.
 
-### 4. Membangun Kerangka Semantic Layout (`lab4_layout/home.html`)
+Kegunaan: Membantu Anda secara visual melihat batas atau area dari elemen div tersebut di dalam halaman web.
 
-HTML5 memperkenalkan elemen semantik untuk memberikan arti yang jelas pada struktur dokumen web, bukan sekadar menggunakan `div` generik. Kita menyusun kerangka utama di dalam kontainer `<div id="container">` menggunakan elemen seperti `<header>`, `<nav>`, `<section>`, `<aside>`, dan `<footer>`.
+clear: left;
+
+Fungsi: Menentukan sisi mana dari elemen yang tidak boleh berdekatan dengan elemen yang melayang (floating).
+
+Kegunaan: Dengan nilai left, elemen .div4 dipaksa untuk turun ke bawah jika di sebelah kirinya terdapat elemen lain yang menggunakan properti float: left;. Properti ini memastikan .div4 tidak "menimpa" atau sejajar di samping elemen floating sebelah kiri, melainkan berada di bawahnya.
+
+float: none;
+
+Fungsi: Menonaktifkan sifat melayang (float) pada elemen tersebut.
+
+Kegunaan: Memastikan bahwa elemen .div4 kembali ke perilaku tata letak (layout) normal (blok standar) dan tidak lagi mengambang, sehingga aman diposisikan setelah elemen-elemen floating sebelumnya.
+
+Kesimpulan Konsep Clearfix
+Secara keseluruhan, kombinasi properti clear dan float di atas sering digunakan untuk merapikan tata letak (layout) agar elemen di bawahnya tidak berantakan akibat elemen lain yang menggunakan properti float di sekitarnya.
+
+### 3. Membangun Kerangka Semantic Layout (`lab4_layout/home.html`)
 
 ```html
 <div id="container">
@@ -91,16 +94,26 @@ HTML5 memperkenalkan elemen semantik untuk memberikan arti yang jelas pada struk
 </div>
 ```
 
-> ** Penjelasan Teknis:** Penggunaan elemen semantik sangat membantu optimasi mesin pencari (SEO) dan aksesibilitas pembaca layar (*screen reader*), karena struktur dokumen menjadi mudah dipahami oleh mesin maupun pengembang lain.
+**Screenshot Hasil (Kerangka Semantik):**  
+![Langkah 3 - Kerangka Layout Semantik](./screenshots/3.png)
 
-> **📸 Preview (Kerangka Semantik):**  
-> ![Langkah 4 - Kerangka Layout Semantik](./screenshots/4.png)
+<div id="container">: Sebagai pembungkus utama (wrapper) untuk menampung seluruh elemen halaman web agar mudah diatur posisinya di tengah layar.
 
----
+<header>: Bagian kepala halaman yang biasanya berisi judul utama web atau logo (di sini berisi judul "Layout Sederhana").
+
+<nav>: Bagian navigasi atau menu tautan (link) untuk berpindah halaman (Home, Artikel, About, Kontak). Kelas active pada menu Home menandakan halaman yang sedang aktif.
+
+<section id="hero">: Area banner atau hero image di bawah navigasi, biasanya digunakan untuk menyoroti konten utama atau gambar menarik.
+
+<section id="wrapper">: Pembungkus tambahan untuk mengatur tata letak dua kolom di bawah hero.
+
+<section id="main">: Area untuk konten utama artikel atau informasi penting.
+
+<aside id="sidebar">: Area sidebar (samping) yang biasanya berisi widget, menu tambahan, atau iklan.
+
+<footer>: Bagian kaki halaman yang berisi informasi hak cipta (copyright) atau identitas pembuat (contoh: Universitas Pelita Bangsa).
 
 ### 5. Penataan Header, Navigasi, dan Hero Panel
-
-Setelah kerangka terbentuk, kita mempercantik tampilannya melalui file `style.css`. Kontainer utama diberi lebar tetap (`980px`), diposisikan di tengah layar menggunakan `margin: 0 auto`, serta diberi efek bayangan (`box-shadow`) agar tampak seperti kanvas halaman web profesional.
 
 ```css
 #container {
@@ -127,20 +140,46 @@ nav a {
 }
 ```
 
-> ** Penjelasan Teknis:** Bilah navigasi (`nav`) ditata menggunakan tautan bergaya blok dengan warna latar biru khas korporat, lengkap dengan area *Hero Panel* yang berfungsi sebagai ruang sorot (*banner* atau *call-to-action*) di bawah menu.
+**Screenshot Hasil (Header & Hero):**  
+![Langkah 4 - Tampilan Header dan Hero Panel](./screenshots/4.png)
 
-> **📸 Preview (Header & Hero):**  
-> ![Langkah 5 - Tampilan Header dan Hero Panel](./screenshots/5.png)
+#container
 
----
+Mengatur lebar total halaman web menjadi 980px.
+
+margin: 0 auto; berfungsi untuk membuat posisi kontainer berada tepat di tengah layar secara horizontal.
+
+box-shadow memberikan efek bayangan tipis berwarna abu-abu di sekeliling kontainer agar tampak menonjol seperti lembaran kertas.
+
+nav
+
+display: block; memastikan elemen navigasi bersifat blok penuh.
+
+background-color: #1f5faa; memberikan warna latar belakang biru tua pada area menu navigasi.
+
+nav a
+
+Mengatur gaya untuk setiap tautan (link) di dalam menu.
+
+padding: 15px 30px; memberikan ruang/jarak di dalam tombol menu agar lebih nyaman diklik.
+
+display: inline-block; membuat tautan bisa diatur ukuran padding-nya namun tetap berjejer ke samping.
+
+color, font-size, font-weight, dan text-decoration: none; mengatur teks agar berwarna putih, berukuran 14px, tebal (bold), dan menghilangkan garis bawah bawaan tautan.
+
+#hero
+
+background-color: #e4e4e5; memberikan warna latar belakang abu-abu terang pada area hero panel.
+
+padding: 50px 20px; memberikan jarak isi di dalam area hero agar terlihat lebih luas dan lega.
+
+margin-bottom: 20px; memberikan jarak kosong di bawah hero panel sebelum masuk ke bagian konten berikutnya.
 
 ### 6. Pembagian Dua Kolom (Main Content & Sidebar Widget)
-
-Tata letak web standar umumnya membagi area konten menjadi dua kolom: kolom utama untuk isi berita/artikel dan kolom samping (sidebar) untuk widget atau informasi tambahan. Kita membagi `#wrapper` menggunakan teknik `float: left` dengan alokasi lebar yang proporsional.
-
-* **Kolom Utama (`#main`):** Lebar 640px.
-* **Kolom Samping (`#sidebar`):** Lebar 260px.
-* Di dalam kolom utama, disematkan tiga kotak gambar melingkar (`.box`, `.image-circle`) menggunakan persentase lebar `33.33%` agar tersusun rata tiga kolom.
+Membagi area `#wrapper` menjadi dua kolom berdampingan menggunakan `float: left`:
+- Kolom Utama (`#main`): selebar 640px.
+- Kolom Samping (`#sidebar`): selebar 260px.
+- Disertai pembuatan komponen widget (`.widget-box`) pada sidebar dan baris 3 kotak gambar lingkaran (`.box`, `.image-circle`) pada konten utama.
 
 ```css
 #main {
@@ -166,18 +205,41 @@ Tata letak web standar umumnya membagi area konten menjadi dua kolom: kolom utam
 }
 ```
 
-> ** Penjelasan Teknis:** Properti `box-sizing: border-box` sangat penting agar perhitungan lebar elemen menyertakan padding dan border, sehingga layout tidak rusak akibat kelebihan lebar pixel.
+**Screenshot Hasil (Main Content & Sidebar):**  
+![Langkah 5 - Main Content dan Sidebar Widget](./screenshots/5.png)
 
-> **📸 Preview (Main Content & Sidebar):**  
-> ![Langkah 6 - Main Content dan Sidebar Widget](./screenshots/6.png)
 
----
+#main (Konten Utama)
 
-### 7. Integrasi Artikel Featurette dan Footer
+float: left; membuat elemen konten utama mengambang ke sebelah kiri.
 
-Tahap akhir adalah menyusun isi artikel (`.entry`) dengan teknik perataan gambar dinamis (`float: left` dan `float: right`) agar teks dapat mengalir di samping gambar (*text-wrapping*). 
+width: 640px; menetapkan lebar area konten utama.
 
-Sebagai penutup, elemen `footer` diberi properti `clear: both` untuk memastikan footer selalu berada di bawah seluruh elemen yang menggunakan float, mencegah elemen meluap keluar dari kontainer.
+padding: 20px; memberikan jarak bagian dalam agar teks atau elemen di dalamnya tidak menempel langsung pada tepi batas.
+
+#sidebar (Sidebar Widget)
+
+float: left; membuat sidebar ikut mengambang ke kiri sehingga berdampingan secara horizontal dengan #main.
+
+width: 260px; menetapkan lebar area sidebar. Jika ditotal dengan lebar #main (640px + 20px+20px padding) dan sidebar (260px + 20px+20px padding), ukurannya pas berada di dalam kontainer utama.
+
+padding: 20px; memberikan jarak dalam agar isi sidebar terlihat rapi.
+
+.box (Kotak Grid / Kolom Tambahan)
+
+width: 33.333333%; membagi elemen menjadi 3 bagian yang sama rata dalam satu baris (karena 100% dibagi 3).
+
+float: left; dan display: block; membuat kotak-kotak tersebut berjejer ke samping.
+
+box-sizing: border-box; memastikan ukuran lebar 33.3% sudah termasuk padding, sehingga tidak merusak tata letak.
+
+padding: 0 10px; memberikan jarak antar kotak, dan text-align: center; membuat teks/gambar di dalamnya berada di tengah.
+
+.image-circle
+
+border-radius: 50%; membuat gambar atau elemen berbentuk kotak berubah menjadi bentuk lingkaran sempurna.
+
+### 6. Integrasi Artikel Featurette dan Footer
 
 ```css
 .entry img {
@@ -198,9 +260,33 @@ footer {
 }
 ```
 
-> ** Penjelasan Teknis:** Penggunaan `clear: both` pada footer adalah kunci utama dalam teknik *float-based layout* untuk mengunci tinggi kontainer utama (`#container`) agar merangkum seluruh isi konten di dalamnya dengan sempurna.
+**Screenshot Hasil Utuh Halaman Beranda (`home.html`):**  
+![Langkah 6 - Tampilan Utuh Home Layout](./screenshots/6.png)
 
-> **📸 Preview (Tampilan Utuh Beranda / `home.html`):**  
-> ![Langkah 7 - Tampilan Utuh Home Layout](./screenshots/7.png)
+.entry img (Gambar Artikel Standar)
 
----
+float: left; membuat gambar diletakkan di sebelah kiri teks, sehingga teks dapat mengalir di sebelah kanan gambar.
+
+border-radius: 5px; membuat sudut-sudut gambar menjadi sedikit melengkung (tidak lancip).
+
+margin-right: 15px; memberikan jarak kosong di sebelah kanan gambar agar tidak menempel langsung dengan teks di sampingnya.
+
+.entry .right-img (Gambar Artikel Posisi Kanan)
+
+float: right; mengubah posisi gambar agar berada di sebelah kanan teks (mengambang ke kanan).
+
+margin-right: 0; menghapus jarak kanan bawaan.
+
+margin-left: 15px; memberikan jarak di sebelah kiri gambar agar teks di sebelah kirinya tidak menempel.
+
+footer (Bagian Kaki Halaman)
+
+clear: both; memastikan footer selalu berada di bawah elemen-elemen yang menggunakan properti float sebelumnya (seperti #main dan #sidebar), mencegah footer naik menimpa konten atasnya.
+
+background-color: #1d1d1d; memberikan warna latar belakang hitam/abu-abu gelap.
+
+padding: 20px; memberikan jarak isi di dalam area footer agar terlihat lega.
+
+color: #eee; mengubah warna teks di dalam footer menjadi abu-abu terang agar mudah dibaca di atas latar belakang gelap.
+
+
