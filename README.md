@@ -1,7 +1,8 @@
+# Langkah-Langkah Praktikum
 
-## Langkah-Langkah Praktikum
+## 1. Konsep Box Element dan CSS Float (`lab4_box.html`)
 
-### 1. Konsep Box Element dan CSS Float (`lab4_box.html`)
+### Kode HTML
 
 ```html
 <section>
@@ -11,36 +12,43 @@
 </section>
 ```
 
+### Kode CSS
+
 ```css
 div {
     float: left;
     padding: 10px;
 }
+
 .div1 { background: red; }
 .div2 { background: yellow; color: #000; }
 .div3 { background: green; }
 ```
 
-**Screenshot Hasil :**  
-![Langkah 1 - Box Element Dan CSS Float](./screenshots/1.png)
+**Screenshot Hasil:**
 
-Struktur HTML (<section> dan <div>):
+![Langkah 1 - Box Element dan CSS Float](./screenshots/1.png)
 
-Sebuah elemen induk <section> berisi tiga elemen anak berbentuk kotak (<div>) dengan kelas div1, div2, dan div3.
+### Penjelasan
 
-Aturan Umum untuk Semua div (div { ... }):
+**Struktur HTML (`<section>` dan `<div>`)**
 
-float: left;: Membuat ketiga kotak yang tadinya tersusun secara vertikal (kebawah) menjadi berjajar ke samping kiri secara horizontal.
+Sebuah elemen induk `<section>` berisi tiga elemen anak berbentuk kotak (`<div>`) dengan kelas `div1`, `div2`, dan `div3`.
 
-padding: 10px;: Menambahkan ruang di dalam setiap kotak antara teks dan bagian tepinya.
+**Aturan Umum untuk Semua `div` (`div { ... }`)**
 
-Styling Spesifik per Kotak (.div1, .div2, .div3):
+- `float: left;`: Membuat ketiga kotak yang tadinya tersusun secara vertikal menjadi berjajar ke samping kiri secara horizontal.
+- `padding: 10px;`: Menambahkan ruang di dalam setiap kotak antara teks dan bagian tepinya.
 
-.div1: Memberikan warna latar belakang merah.
-.div2: Memberikan warna latar belakang kuning dengan teks berwarna hitam (#000).
-.div3: Memberikan warna latar belakang hijau.
+**Styling Spesifik per Kotak (`.div1`, `.div2`, `.div3`)**
 
-### 2. Mengatur Clearfix Element
+- `.div1`: Memberikan warna latar belakang merah.
+- `.div2`: Memberikan warna latar belakang kuning dengan teks berwarna hitam (`#000`).
+- `.div3`: Memberikan warna latar belakang hijau.
+
+## 2. Mengatur Clearfix Element
+
+### Kode CSS
 
 ```css
 .div4 {
@@ -50,31 +58,34 @@ Styling Spesifik per Kotak (.div1, .div2, .div3):
 }
 ```
 
-**Screenshot Hasil (Clearfix):**  
+**Screenshot Hasil (Clearfix):**
+
 ![Langkah 2 - Clearfix Element](./screenshots/2.png)
 
-background-color: blue;
+### Penjelasan Properti
 
-Fungsi: Memberikan warna latar belakang (background) biru pada elemen dengan kelas .div4.
+**`background-color: blue;`**
 
-Kegunaan: Membantu Anda secara visual melihat batas atau area dari elemen div tersebut di dalam halaman web.
+- **Fungsi:** Memberikan warna latar belakang biru pada elemen dengan kelas `.div4`.
+- **Kegunaan:** Membantu melihat batas atau area elemen `div` di dalam halaman web.
 
-clear: left;
+**`clear: left;`**
 
-Fungsi: Menentukan sisi mana dari elemen yang tidak boleh berdekatan dengan elemen yang melayang (floating).
+- **Fungsi:** Menentukan sisi elemen yang tidak boleh berdekatan dengan elemen yang melayang (*floating*).
+- **Kegunaan:** Dengan nilai `left`, elemen `.div4` dipaksa turun ke bawah jika di sebelah kirinya terdapat elemen lain yang menggunakan `float: left;`. Properti ini memastikan `.div4` tidak sejajar di samping elemen *floating* sebelah kiri, melainkan berada di bawahnya.
 
-Kegunaan: Dengan nilai left, elemen .div4 dipaksa untuk turun ke bawah jika di sebelah kirinya terdapat elemen lain yang menggunakan properti float: left;. Properti ini memastikan .div4 tidak "menimpa" atau sejajar di samping elemen floating sebelah kiri, melainkan berada di bawahnya.
+**`float: none;`**
 
-float: none;
+- **Fungsi:** Menonaktifkan sifat melayang (*float*) pada elemen tersebut.
+- **Kegunaan:** Memastikan elemen `.div4` kembali ke perilaku tata letak normal sebagai elemen blok dan tidak lagi mengambang.
 
-Fungsi: Menonaktifkan sifat melayang (float) pada elemen tersebut.
+### Kesimpulan Konsep Clearfix
 
-Kegunaan: Memastikan bahwa elemen .div4 kembali ke perilaku tata letak (layout) normal (blok standar) dan tidak lagi mengambang, sehingga aman diposisikan setelah elemen-elemen floating sebelumnya.
+Properti `clear` digunakan untuk mengatur posisi elemen agar tidak berada di samping elemen yang menggunakan `float`. Properti ini membantu merapikan tata letak agar elemen di bawahnya tidak bertumpuk dengan elemen *floating*. Secara teknis, `clear` berbeda dengan teknik *clearfix*, yang digunakan untuk membuat elemen induk menampung elemen-elemen *floating* di dalamnya.
 
-Kesimpulan Konsep Clearfix
-Secara keseluruhan, kombinasi properti clear dan float di atas sering digunakan untuk merapikan tata letak (layout) agar elemen di bawahnya tidak berantakan akibat elemen lain yang menggunakan properti float di sekitarnya.
+## 3. Membangun Kerangka Semantic Layout (`lab4_layout/home.html`)
 
-### 3. Membangun Kerangka Semantic Layout (`lab4_layout/home.html`)
+### Kode HTML
 
 ```html
 <div id="container">
@@ -94,26 +105,24 @@ Secara keseluruhan, kombinasi properti clear dan float di atas sering digunakan 
 </div>
 ```
 
-**Screenshot Hasil (Kerangka Semantik):**  
+**Screenshot Hasil (Kerangka Semantik):**
+
 ![Langkah 3 - Kerangka Layout Semantik](./screenshots/3.png)
 
-<div id="container">: Sebagai pembungkus utama (wrapper) untuk menampung seluruh elemen halaman web agar mudah diatur posisinya di tengah layar.
+### Penjelasan Elemen
 
-<header>: Bagian kepala halaman yang biasanya berisi judul utama web atau logo (di sini berisi judul "Layout Sederhana").
+- **`<div id="container">`:** Pembungkus utama (*wrapper*) untuk menampung seluruh elemen halaman web agar mudah diatur posisinya di tengah layar.
+- **`<header>`:** Bagian kepala halaman yang biasanya berisi judul utama web atau logo. Pada contoh ini, bagian tersebut berisi judul "Layout Sederhana".
+- **`<nav>`:** Bagian navigasi atau menu tautan untuk berpindah halaman, yaitu Home, Artikel, About, dan Kontak. Kelas `active` pada menu Home menandakan halaman yang sedang aktif.
+- **`<section id="hero">`:** Area banner atau *hero image* di bawah navigasi, biasanya digunakan untuk menyoroti konten utama atau gambar menarik.
+- **`<section id="wrapper">`:** Pembungkus tambahan untuk mengatur tata letak dua kolom di bawah hero.
+- **`<section id="main">`:** Area untuk konten utama artikel atau informasi penting.
+- **`<aside id="sidebar">`:** Area *sidebar* yang biasanya berisi widget, menu tambahan, atau informasi pendukung.
+- **`<footer>`:** Bagian kaki halaman yang berisi informasi hak cipta (*copyright*) atau identitas pembuat, seperti Universitas Pelita Bangsa.
 
-<nav>: Bagian navigasi atau menu tautan (link) untuk berpindah halaman (Home, Artikel, About, Kontak). Kelas active pada menu Home menandakan halaman yang sedang aktif.
+## 4. Penataan Header, Navigasi, dan Hero Panel
 
-<section id="hero">: Area banner atau hero image di bawah navigasi, biasanya digunakan untuk menyoroti konten utama atau gambar menarik.
-
-<section id="wrapper">: Pembungkus tambahan untuk mengatur tata letak dua kolom di bawah hero.
-
-<section id="main">: Area untuk konten utama artikel atau informasi penting.
-
-<aside id="sidebar">: Area sidebar (samping) yang biasanya berisi widget, menu tambahan, atau iklan.
-
-<footer>: Bagian kaki halaman yang berisi informasi hak cipta (copyright) atau identitas pembuat (contoh: Universitas Pelita Bangsa).
-
-### 5. Penataan Header, Navigasi, dan Hero Panel
+### Kode CSS
 
 ```css
 #container {
@@ -121,10 +130,12 @@ Secara keseluruhan, kombinasi properti clear dan float di atas sering digunakan 
     margin: 0 auto;
     box-shadow: 0 0 1em #cccccc;
 }
+
 nav {
     display: block;
     background-color: #1f5faa;
 }
+
 nav a {
     padding: 15px 30px;
     display: inline-block;
@@ -133,6 +144,7 @@ nav a {
     text-decoration: none;
     font-weight: bold;
 }
+
 #hero {
     background-color: #e4e4e5;
     padding: 50px 20px;
@@ -140,46 +152,50 @@ nav a {
 }
 ```
 
-**Screenshot Hasil (Header & Hero):**  
+**Screenshot Hasil (Header & Hero):**
+
 ![Langkah 4 - Tampilan Header dan Hero Panel](./screenshots/4.png)
 
-#container
+### Penjelasan CSS
 
-Mengatur lebar total halaman web menjadi 980px.
+**`#container`**
 
-margin: 0 auto; berfungsi untuk membuat posisi kontainer berada tepat di tengah layar secara horizontal.
+- `width: 980px;`: Mengatur lebar total kontainer halaman web menjadi 980 piksel.
+- `margin: 0 auto;`: Membuat kontainer berada di tengah layar secara horizontal.
+- `box-shadow: 0 0 1em #cccccc;`: Memberikan efek bayangan tipis berwarna abu-abu di sekeliling kontainer agar tampak menonjol.
 
-box-shadow memberikan efek bayangan tipis berwarna abu-abu di sekeliling kontainer agar tampak menonjol seperti lembaran kertas.
+**`nav`**
 
-nav
+- `display: block;`: Memastikan elemen navigasi ditampilkan sebagai elemen blok.
+- `background-color: #1f5faa;`: Memberikan warna latar belakang biru tua pada area menu navigasi.
 
-display: block; memastikan elemen navigasi bersifat blok penuh.
+**`nav a`**
 
-background-color: #1f5faa; memberikan warna latar belakang biru tua pada area menu navigasi.
+Mengatur gaya untuk setiap tautan di dalam menu.
 
-nav a
+- `padding: 15px 30px;`: Memberikan ruang di dalam tautan agar lebih nyaman diklik.
+- `display: inline-block;`: Memungkinkan tautan memiliki ukuran dan *padding* tetapi tetap berjejer ke samping.
+- `color: #ffffff;`: Mengubah warna teks menjadi putih.
+- `font-size: 14px;`: Mengatur ukuran teks menjadi 14 piksel.
+- `text-decoration: none;`: Menghilangkan garis bawah bawaan tautan.
+- `font-weight: bold;`: Membuat teks menjadi tebal.
 
-Mengatur gaya untuk setiap tautan (link) di dalam menu.
+**`#hero`**
 
-padding: 15px 30px; memberikan ruang/jarak di dalam tombol menu agar lebih nyaman diklik.
+- `background-color: #e4e4e5;`: Memberikan warna latar belakang abu-abu terang pada area hero panel.
+- `padding: 50px 20px;`: Memberikan jarak di dalam area hero agar terlihat luas dan lega.
+- `margin-bottom: 20px;`: Memberikan jarak kosong di bawah hero panel sebelum bagian konten berikutnya.
 
-display: inline-block; membuat tautan bisa diatur ukuran padding-nya namun tetap berjejer ke samping.
+## 5. Pembagian Dua Kolom (Main Content & Sidebar Widget)
 
-color, font-size, font-weight, dan text-decoration: none; mengatur teks agar berwarna putih, berukuran 14px, tebal (bold), dan menghilangkan garis bawah bawaan tautan.
+Area `#wrapper` dibagi menjadi dua kolom berdampingan menggunakan `float: left`:
 
-#hero
+- Kolom utama (`#main`) selebar 640 piksel.
+- Kolom samping (`#sidebar`) selebar 260 piksel.
+- Komponen widget (`.widget-box`) dibuat pada sidebar.
+- Tiga kotak gambar berbentuk lingkaran (`.box`, `.image-circle`) ditampilkan pada konten utama.
 
-background-color: #e4e4e5; memberikan warna latar belakang abu-abu terang pada area hero panel.
-
-padding: 50px 20px; memberikan jarak isi di dalam area hero agar terlihat lebih luas dan lega.
-
-margin-bottom: 20px; memberikan jarak kosong di bawah hero panel sebelum masuk ke bagian konten berikutnya.
-
-### 6. Pembagian Dua Kolom (Main Content & Sidebar Widget)
-Membagi area `#wrapper` menjadi dua kolom berdampingan menggunakan `float: left`:
-- Kolom Utama (`#main`): selebar 640px.
-- Kolom Samping (`#sidebar`): selebar 260px.
-- Disertai pembuatan komponen widget (`.widget-box`) pada sidebar dan baris 3 kotak gambar lingkaran (`.box`, `.image-circle`) pada konten utama.
+### Kode CSS
 
 ```css
 #main {
@@ -187,11 +203,13 @@ Membagi area `#wrapper` menjadi dua kolom berdampingan menggunakan `float: left`
     width: 640px;
     padding: 20px;
 }
+
 #sidebar {
     float: left;
     width: 260px;
     padding: 20px;
 }
+
 .box {
     display: block;
     float: left;
@@ -200,46 +218,47 @@ Membagi area `#wrapper` menjadi dua kolom berdampingan menggunakan `float: left`
     padding: 0 10px;
     text-align: center;
 }
+
 .image-circle {
     border-radius: 50%;
 }
 ```
 
-**Screenshot Hasil (Main Content & Sidebar):**  
+**Screenshot Hasil (Main Content & Sidebar):**
+
 ![Langkah 5 - Main Content dan Sidebar Widget](./screenshots/5.png)
 
+### Penjelasan CSS
 
-#main (Konten Utama)
+**`#main` (Konten Utama)**
 
-float: left; membuat elemen konten utama mengambang ke sebelah kiri.
+- `float: left;`: Membuat elemen konten utama mengambang ke sebelah kiri.
+- `width: 640px;`: Menetapkan lebar area konten utama.
+- `padding: 20px;`: Memberikan jarak di bagian dalam agar teks atau elemen tidak menempel langsung pada tepi.
 
-width: 640px; menetapkan lebar area konten utama.
+**`#sidebar` (Sidebar Widget)**
 
-padding: 20px; memberikan jarak bagian dalam agar teks atau elemen di dalamnya tidak menempel langsung pada tepi batas.
+- `float: left;`: Membuat sidebar ikut mengambang ke kiri sehingga berdampingan secara horizontal dengan `#main`.
+- `width: 260px;`: Menetapkan lebar area sidebar.
+- `padding: 20px;`: Memberikan jarak di dalam agar isi sidebar terlihat rapi.
 
-#sidebar (Sidebar Widget)
+  **Catatan:** Jika model kotak CSS yang digunakan adalah `content-box` (nilai bawaan), lebar aktual `#main` menjadi 680 piksel dan `#sidebar` menjadi 300 piksel karena *padding* ditambahkan di luar `width`. Dengan demikian, totalnya 980 piksel, belum termasuk kemungkinan batas atau *margin*. Jika ingin lebar yang ditetapkan sudah mencakup *padding*, gunakan `box-sizing: border-box;`.
 
-float: left; membuat sidebar ikut mengambang ke kiri sehingga berdampingan secara horizontal dengan #main.
+**`.box` (Kotak Grid / Kolom Tambahan)**
 
-width: 260px; menetapkan lebar area sidebar. Jika ditotal dengan lebar #main (640px + 20px+20px padding) dan sidebar (260px + 20px+20px padding), ukurannya pas berada di dalam kontainer utama.
+- `width: 33.333333%;`: Membagi area menjadi tiga bagian sama lebar dalam satu baris.
+- `float: left;` dan `display: block;`: Membuat kotak-kotak berjejer ke samping.
+- `box-sizing: border-box;`: Memastikan ukuran lebar 33,3% sudah mencakup *padding*, sehingga tidak merusak tata letak.
+- `padding: 0 10px;`: Memberikan jarak horizontal di antara kotak.
+- `text-align: center;`: Membuat teks atau gambar di dalam kotak berada di tengah.
 
-padding: 20px; memberikan jarak dalam agar isi sidebar terlihat rapi.
+**`.image-circle`**
 
-.box (Kotak Grid / Kolom Tambahan)
+- `border-radius: 50%;`: Membuat gambar atau elemen berbentuk kotak menjadi lingkaran jika lebar dan tingginya sama. Jika dimensinya berbeda, bentuknya akan menjadi elips.
 
-width: 33.333333%; membagi elemen menjadi 3 bagian yang sama rata dalam satu baris (karena 100% dibagi 3).
+## 6. Integrasi Artikel Featurette dan Footer
 
-float: left; dan display: block; membuat kotak-kotak tersebut berjejer ke samping.
-
-box-sizing: border-box; memastikan ukuran lebar 33.3% sudah termasuk padding, sehingga tidak merusak tata letak.
-
-padding: 0 10px; memberikan jarak antar kotak, dan text-align: center; membuat teks/gambar di dalamnya berada di tengah.
-
-.image-circle
-
-border-radius: 50%; membuat gambar atau elemen berbentuk kotak berubah menjadi bentuk lingkaran sempurna.
-
-### 6. Integrasi Artikel Featurette dan Footer
+### Kode CSS
 
 ```css
 .entry img {
@@ -247,11 +266,13 @@ border-radius: 50%; membuat gambar atau elemen berbentuk kotak berubah menjadi b
     border-radius: 5px;
     margin-right: 15px;
 }
+
 .entry .right-img {
     float: right;
     margin-right: 0;
     margin-left: 15px;
 }
+
 footer {
     clear: both;
     background-color: #1d1d1d;
@@ -260,33 +281,27 @@ footer {
 }
 ```
 
-**Screenshot Hasil Utuh Halaman Beranda (`home.html`):**  
+**Screenshot Hasil Utuh Halaman Beranda (`home.html`):**
+
 ![Langkah 6 - Tampilan Utuh Home Layout](./screenshots/6.png)
 
-.entry img (Gambar Artikel Standar)
+### Penjelasan CSS
 
-float: left; membuat gambar diletakkan di sebelah kiri teks, sehingga teks dapat mengalir di sebelah kanan gambar.
+**`.entry img` (Gambar Artikel Standar)**
 
-border-radius: 5px; membuat sudut-sudut gambar menjadi sedikit melengkung (tidak lancip).
+- `float: left;`: Membuat gambar berada di sebelah kiri teks, sehingga teks dapat mengalir di sebelah kanan gambar.
+- `border-radius: 5px;`: Membuat sudut gambar sedikit melengkung.
+- `margin-right: 15px;`: Memberikan jarak kosong di sebelah kanan gambar agar tidak menempel pada teks.
 
-margin-right: 15px; memberikan jarak kosong di sebelah kanan gambar agar tidak menempel langsung dengan teks di sampingnya.
+**`.entry .right-img` (Gambar Artikel Posisi Kanan)**
 
-.entry .right-img (Gambar Artikel Posisi Kanan)
+- `float: right;`: Mengubah posisi gambar agar berada di sebelah kanan teks.
+- `margin-right: 0;`: Menghapus jarak di sisi kanan.
+- `margin-left: 15px;`: Memberikan jarak di sebelah kiri gambar agar teks tidak menempel.
 
-float: right; mengubah posisi gambar agar berada di sebelah kanan teks (mengambang ke kanan).
+**`footer` (Bagian Kaki Halaman)**
 
-margin-right: 0; menghapus jarak kanan bawaan.
-
-margin-left: 15px; memberikan jarak di sebelah kiri gambar agar teks di sebelah kirinya tidak menempel.
-
-footer (Bagian Kaki Halaman)
-
-clear: both; memastikan footer selalu berada di bawah elemen-elemen yang menggunakan properti float sebelumnya (seperti #main dan #sidebar), mencegah footer naik menimpa konten atasnya.
-
-background-color: #1d1d1d; memberikan warna latar belakang hitam/abu-abu gelap.
-
-padding: 20px; memberikan jarak isi di dalam area footer agar terlihat lega.
-
-color: #eee; mengubah warna teks di dalam footer menjadi abu-abu terang agar mudah dibaca di atas latar belakang gelap.
-
-
+- `clear: both;`: Memastikan footer berada di bawah elemen-elemen yang menggunakan properti `float` sebelumnya, seperti `#main` dan `#sidebar`, sehingga footer tidak naik dan menimpa konten di atasnya.
+- `background-color: #1d1d1d;`: Memberikan warna latar belakang hitam atau abu-abu gelap.
+- `padding: 20px;`: Memberikan jarak di dalam area footer agar terlihat lega.
+- `color: #eee;`: Mengubah warna teks menjadi abu-abu terang agar mudah dibaca di atas latar belakang gelap.
