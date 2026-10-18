@@ -1,3 +1,19 @@
+# Praktikum 4: CSS Layout
+
+Repository ini disusun untuk memenuhi tugas **Praktikum 4 - CSS Layout** pada mata kuliah Pemrograman Web.
+
+**Identitas Mahasiswa:**
+- **Nama:** Gama Daya Laksana
+- **NIM:** 312510051
+- **Kelas:** I253A
+- **Program Studi:** Teknik Informatika
+- **Dosen Pengampu:** Agung Nugroho, S.Kom., M.Kom.
+- **Kampus:** Universitas Pelita Bangsa
+
+---
+
+
+
 # Langkah-Langkah Praktikum
 
 ## 1. Konsep Box Element dan CSS Float (`lab4_box.html`)
@@ -305,3 +321,30 @@ footer {
 - `background-color: #1d1d1d;`: Memberikan warna latar belakang hitam atau abu-abu gelap.
 - `padding: 20px;`: Memberikan jarak di dalam area footer agar terlihat lega.
 - `color: #eee;`: Mengubah warna teks menjadi abu-abu terang agar mudah dibaca di atas latar belakang gelap.
+
+
+Pertanyaan	dan	Tugas
+1. Tambahkan Layout untuk menu About
+=> buat single layout yang berisi deskripsi, portfolio, dll
+
+![Gambar 7 - Tampilan menu about](./screenshots/7.png)
+
+2. Tambahkan layout untuk menu Contact
+=> yang berisi form isian: nama, email, message, dll
+
+![Gambar 8 - Tampilan menu contact](./screenshots/8.png)
+
+
+## Checklist Sebelum Dikumpulkan
+
+- [x] Latihan Box Element dan Float berhasil dibuat (`lab4_box.html`).
+- [x] Eksperimen clearfix (`clear: left`) berhasil memisahkan baris elemen float.
+- [x] Kerangka Semantic HTML5 (`header`, `nav`, `section`, `article`, `aside`, `footer`) diimplementasikan secara terstruktur.
+- [x] Layout web sederhana dua kolom (Main Content 640px dan Sidebar 260px) berfungsi dengan proporsional.
+- [x] Tiga kotak kolom gambar lingkaran (`.image-circle`) dan featurette artikel bergambar (`float: left` & `float: right`) berhasil ditampilkan.
+- [x] Tugas 1 (Single layout menu About `about.html`) telah selesai dibuat dengan profil dan portofolio.
+- [x] Tugas 2 (Layout menu Contact `kontak.html`) telah selesai dibuat dengan formulir dan widget kontak.
+- [x] Folder `screenshots/` memuat 9 tangkapan layar lengkap (`1.png` - `9.png`).
+- [x] Folder `Laporan/` diabaikan oleh Git melalui `.gitignore`.
+- [x] Berkas `README.md` disusun rapi dan mendalam sesuai modul.
+- [x] Perubahan di-commit secara lokal di repositori dan siap di-push manual oleh mahasiswa.
