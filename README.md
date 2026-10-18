@@ -1,5 +1,3 @@
----
-
 ## Langkah-langkah Praktikum
 
 ### 1. Konsep Box Element dan CSS Float (`lab4_box.html`)
