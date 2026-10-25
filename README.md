@@ -43,7 +43,7 @@ div {
 
 **Screenshot Hasil:**
 
-![Langkah 1 - Box Element dan CSS Float](../screenshots/1.png)
+![Langkah 1 - Box Element dan CSS Float](./screenshots/1.png)
 
 ### Penjelasan
 
